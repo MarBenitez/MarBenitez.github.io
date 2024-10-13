@@ -3,30 +3,42 @@
     "title": "Airbnb Rio de Janeiro Analysis",
     "description": "An end-to-end analysis of Airbnb listings to identify pricing trends and market behavior. Involves data cleaning, feature engineering, EDA, and model building.",
     "link": "https://github.com/MarBenitez/airbnb-project",
-    "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib"]
+    "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+    "image": "airbnb-rio.jpg"
+  },
+  {
+    "title": "Early Cancer Detection ML Project",
+    "description": "Developed a machine learning model for early cancer detection using medical imaging data. The project aims to improve diagnostic accuracy and reduce false positives in cancer screening.",
+    "link": "https://github.com/MarBenitez/early-cancer-detection",
+    "technologies": ["Python", "TensorFlow", "Scikit-learn", "OpenCV", "Pandas"],
+    "image": "early-cancer-detection.png"
   },
   {
     "title": "Data Processing GUI for Sensor Data Analysis",
     "description": "A GUI application designed to streamline data processing workflows, showcasing my abilities in software development for data-focused applications.",
     "link": "https://github.com/MarBenitez/data-processing-gui",
-    "technologies": ["Python", "Tkinter", "Pandas"]
+    "technologies": ["Python", "Tkinter", "Pandas"],
+    "image": "data-processing-gui.png"
   },
   {
     "title": "Sales Dashboard in Power BI",
     "description": "Visualizes sales data across different regions.",
     "link": "https://app.powerbi.com/view?r=eyJrIjoiZGRhYmMyOTMtYmEzYy00YjUzLWIyNTAtNmYwMmM2NWI3ZjhjIiwidCI6IjhhZWJkZGI2LTM0MTgtNDNhMS1hMjU1LWI5NjQxODZlY2M2NCIsImMiOjl9",
-    "technologies": ["Power BI"]
+    "technologies": ["Power BI"],
+    "image": "sales-dashboard.png"
   },
   {
     "title": "Rio de Janeiro - Airbnb Streamlit app",
     "description": "User-friendly application designed to help people plan their trip to Rio de Janeiro easily and effectively.",
     "link": "https://airbnb-rio.streamlit.app/",
-    "technologies": ["Python", "NLTK", "Scikit-learn", "Pandas"]
+    "technologies": ["Python", "NLTK", "Scikit-learn", "Pandas"],
+    "image": "airbnb-streamlit.png"
   },
   {
     "title": "Image Classification with CNNs",
     "description": "Implemented a Convolutional Neural Network to classify images from the CIFAR-10 dataset, achieving 89% accuracy.",
     "link": "https://github.com/MarBenitez/ocr-mnist-tensorflow",
-    "technologies": ["Python", "TensorFlow", "Keras", "NumPy"]
+    "technologies": ["Python", "TensorFlow", "Keras", "NumPy"],
+    "image": "cnn.png"
   }
 ]

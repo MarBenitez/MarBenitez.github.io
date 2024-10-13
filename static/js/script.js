@@ -4,38 +4,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         e.preventDefault();
 
         const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+        if (targetId) {
+            const targetElement = document.getElementById(targetId);
 
-        if (targetElement) {
-            targetElement.scrollIntoView({
-                behavior: 'smooth'
-            });
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         }
     });
 });
 
-// Intersection Observer for animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.2
-};
-
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-
-// Add active class to navigation links
+// Add active class to navigation links and animate sections
 function handleScroll() {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
@@ -47,6 +28,7 @@ function handleScroll() {
         const sectionHeight = section.clientHeight;
         if (window.pageYOffset >= sectionTop - sectionHeight / 3) {
             current = section.getAttribute('id');
+            section.classList.add('animate');
         }
     });
 
@@ -59,22 +41,39 @@ function handleScroll() {
 }
 
 // Initial call to handleScroll
-handleScroll();
+window.addEventListener('load', handleScroll);
 
-// Add scroll event listener with debounce for better performance
-let scrollTimeout;
-window.addEventListener('scroll', () => {
-    if (scrollTimeout) {
-        window.cancelAnimationFrame(scrollTimeout);
-    }
-    scrollTimeout = window.requestAnimationFrame(handleScroll);
-});
+// Add scroll event listener
+window.addEventListener('scroll', handleScroll);
+
+// Add resize event listener to recalculate section positions
+window.addEventListener('resize', handleScroll);
+
+// Animate skill buttons
+function animateSkillButtons() {
+    const skillButtons = document.querySelectorAll('.skill-button');
+    skillButtons.forEach((button, index) => {
+        button.style.animationDelay = `${index * 50}ms`;
+        button.classList.add('animate-skill');
+    });
+}
+
+// Animate project cards
+function animateProjectCards() {
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 100}ms`;
+        card.classList.add('animate-project');
+    });
+}
 
 // Load projects from JSON file
-fetch('/static/data/projects.json')
-    .then(response => response.json())
-    .then(projects => {
+async function loadProjects() {
+    try {
+        const response = await fetch('projects.json');
+        const projects = await response.json();
         const projectsContainer = document.getElementById('projects-container');
+
         projects.forEach(project => {
             const projectCard = document.createElement('div');
             projectCard.className = 'project-card';
@@ -82,66 +81,36 @@ fetch('/static/data/projects.json')
                 <div class="project-card-content">
                     <h4>${project.title}</h4>
                     <p>${project.description}</p>
-                    <p class="project-technologies">Technologies: ${project.technologies.join(', ')}</p>
-                    <a href="${project.link}" target="_blank" rel="noopener noreferrer" class="view-project-btn">View Project</a>
+                    <p>Technologies: ${project.technologies.join(', ')}</p>
+                    <a href="${project.link}" target="_blank" rel="noopener noreferrer">View Project</a>
                 </div>
             `;
             projectsContainer.appendChild(projectCard);
         });
-    })
-    .catch(error => console.error('Error loading projects:', error));
 
-// Add hover animations to project cards
-document.addEventListener('mouseover', function(event) {
-    if (event.target.closest('.project-card')) {
-        const card = event.target.closest('.project-card');
-        card.style.transform = 'scale(1.05)';
-        card.style.transition = 'transform 0.3s ease';
-    }
-});
-
-document.addEventListener('mouseout', function(event) {
-    if (event.target.closest('.project-card')) {
-        const card = event.target.closest('.project-card');
-        card.style.transform = 'scale(1)';
-    }
-});
-
-// Add typing animation to the header
-const headerTitle = document.querySelector('header h1');
-const headerSubtitle = document.querySelector('header h2');
-
-function typeWriter(element, text, i = 0) {
-    if (i < text.length) {
-        element.innerHTML += text.charAt(i);
-        i++;
-        setTimeout(() => typeWriter(element, text, i), 100);
+        animateProjectCards();
+    } catch (error) {
+        console.error('Error loading projects:', error);
     }
 }
 
+// Call animation functions and load projects when the page loads
 window.addEventListener('load', () => {
-    setTimeout(() => {
-        headerTitle.innerHTML = '';
-        typeWriter(headerTitle, 'Mar Benitez');
-        setTimeout(() => {
-            headerSubtitle.innerHTML = '';
-            typeWriter(headerSubtitle, 'Data Scientist / Analyst');
-        }, 1500);
-    }, 500);
+    animateSkillButtons();
+    loadProjects();
 });
 
-// Add fade-in animation for sections
-function fadeInSections() {
-    const sections = document.querySelectorAll('section');
-    sections.forEach((section, index) => {
-        section.style.opacity = '0';
-        section.style.transform = 'translateY(20px)';
-        section.style.transition = `opacity 0.5s ease ${index * 0.2}s, transform 0.5s ease ${index * 0.2}s`;
-        setTimeout(() => {
-            section.style.opacity = '1';
-            section.style.transform = 'translateY(0)';
-        }, 100);
+// Intersection Observer for section animations
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate');
+        } else {
+            entry.target.classList.remove('animate');
+        }
     });
-}
+}, { threshold: 0.1 });
 
-window.addEventListener('load', fadeInSections);
+document.querySelectorAll('section').forEach(section => {
+    sectionObserver.observe(section);
+});
