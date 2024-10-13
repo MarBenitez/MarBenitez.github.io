@@ -1,0 +1,26 @@
+[
+    {
+      "title": "Airbnb Rio de Janeiro Analysis",
+      "description": "An end-to-end analysis of Airbnb listings to identify pricing trends and market behavior. Involves data cleaning, feature engineering, EDA, and model building.",
+      "link": "https://github.com/MarBenitez/airbnb-project",
+      "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib"]
+    },
+    {
+      "title": "Data Processing GUI for Sensor Data Analysis",
+      "description": "A GUI application designed to streamline data processing workflows, showcasing my abilities in software development for data-focused applications.",
+      "link": "https://github.com/MarBenitez/data-processing-gui",
+      "technologies": ["Python", "Tkinter", "Pandas"]
+    },
+    {
+      "title": "Sales Dashboard in Power BI",
+      "description": "Visualizes sales data across different regions to provide actionable insights for decision-making.",
+      "link": "https://github.com/MarBenitez/sales-dashboard-powerbi",
+      "technologies": ["Power BI"]
+    },
+    {
+      "title": "Image Classification with CNNs",
+      "description": "Implemented a Convolutional Neural Network to classify images from the CIFAR-10 dataset, achieving 89% accuracy.",
+      "link": "https://github.com/MarBenitez/ocr-mnist-tensorflow",
+      "technologies": ["Python", "TensorFlow", "Keras", "NumPy"]
+    }
+  ]
