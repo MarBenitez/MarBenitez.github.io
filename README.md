@@ -6,10 +6,10 @@ This is a simple personal website showcasing skills, projects, and providing a w
 
 - Responsive design
 - About Me section
-- Skills showcase
+- Skills
 - Project portfolio
 - Contact information
-- Downloadable resume/CV
+- Downloadable resume
 
 ## Technologies Used
 
@@ -24,17 +24,17 @@ This is a simple personal website showcasing skills, projects, and providing a w
 3. Replace the images in the `static/images/` directory with your own
 4. Update the `static/css/style.css` file if you want to change the appearance
 5. Modify the `static/js/script.js` file for any additional functionality
-6. Replace `static/files/MAR-BENITEZ-resume.pdf` with your own resume/CV file
+6. Replace `static/files/MAR-BENITEZ-resume.pdf` with your own resume
 
 ## Deployment on GitHub Pages
 
-1. Create a new repository on GitHub named `<your-username>.github.io`
+1. Create a new repository on GitHub named `MarBenitez.github.io`
 2. Push the contents of this repository to your newly created GitHub repository
 3. Go to the repository settings on GitHub
 4. Scroll down to the "GitHub Pages" section
 5. In the "Source" dropdown, select "main" branch
 6. Click "Save"
-7. Your website will be live at `https://<your-username>.github.io`
+7. Your website will be live at `https://MarBenitez.github.io`
 
 ## Customization
 
