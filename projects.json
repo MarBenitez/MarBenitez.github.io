@@ -3,14 +3,14 @@
     "title": "Airbnb Rio de Janeiro Analysis",
     "description": "An end-to-end analysis of Airbnb listings to identify pricing trends and market behavior. Involves data cleaning, feature engineering, EDA, and model building.",
     "link": "https://github.com/MarBenitez/airbnb-project",
-    "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+    "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib", "Seaborn"],
     "image": "airbnb-rio.jpg"
   },
   {
     "title": "Early Cancer Detection ML Project",
-    "description": "Developed a machine learning model for early cancer detection using medical imaging data. The project aims to improve diagnostic accuracy and reduce false positives in cancer screening.",
+    "description": "Replicated and enhanced the findings of the study 'Early Cancer Detection from Multianalyte Blood Test Results'to predict both the presence and type of cancer using ML models.",
     "link": "https://github.com/MarBenitez/Early-Cancer-Detection-ML-Project",
-    "technologies": ["Python", "TensorFlow", "Scikit-learn", "OpenCV", "Pandas"],
+    "technologies": ["Python", "MLFlow", "Scikit-learn", "Scipy", "Pandas"],
     "image": "early-cancer-detection.png"
   },
   {
@@ -31,7 +31,7 @@
     "title": "Rio de Janeiro - Airbnb Streamlit app",
     "description": "User-friendly application designed to help people plan their trip to Rio de Janeiro easily and effectively.",
     "link": "https://airbnb-rio.streamlit.app/",
-    "technologies": ["Python", "NLTK", "Scikit-learn", "Pandas"],
+    "technologies": ["Python", "Streamlit" ,"Scikit-learn", "Pandas"],
     "image": "airbnb-streamlit.png"
   },
   {
