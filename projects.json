@@ -9,7 +9,7 @@
   {
     "title": "Early Cancer Detection ML Project",
     "description": "Developed a machine learning model for early cancer detection using medical imaging data. The project aims to improve diagnostic accuracy and reduce false positives in cancer screening.",
-    "link": "https://github.com/MarBenitez/early-cancer-detection",
+    "link": "https://github.com/MarBenitez/Early-Cancer-Detection-ML-Project",
     "technologies": ["Python", "TensorFlow", "Scikit-learn", "OpenCV", "Pandas"],
     "image": "early-cancer-detection.png"
   },
