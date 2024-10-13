@@ -26,13 +26,14 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
             
-            // Log form data to console (can be replaced by a server-side request)
+            // Here you would typically send this data to a server
+            // For now, we'll just log it to the console
             console.log('Form submitted:', { name, email, message });
             
             // Clear the form
             contactForm.reset();
             
-            // Show a success message
+            // Show a success message (you can replace this with a more user-friendly notification)
             alert('Thank you for your message! I will get back to you soon.');
         });
     } else {

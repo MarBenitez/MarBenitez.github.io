@@ -1,134 +1,143 @@
-<!DOCTYPE HTML>
-<!--
-	Hyperspace by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Mar Benitez</title> 
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/custom.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mar Benitez - Data Science Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Mar Benitez</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-		<!-- Sidebar -->
-			<section id="sidebar">
-				<div class="inner">
-					<nav>
-						<ul>
-							<li><a href="#intro">Home</a></li> 
-							<li><a href="#one">Projects</a></li> 
-							<li><a href="#two">Work Experience</a></li> 
-							<li><a href="#three">Contact</a></li> 
-						</ul>
-					</nav>
-				</div>
-			</section>
+    <main>
+        <section id="about" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">About Me</h2>
+                <div class="row">
+                    <div class="col-md-4 text-center">
+                        <img src="{{ url_for('static', filename='img/IMG_7341.jpg') }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3" style="max-width: 200px;">
+                    </div>
+                    <div class="col-md-8">
+                        <p>Hello! I'm Mar Benitez, a data scientist passionate about solving complex problems using data-driven approaches. With expertise in machine learning, statistical analysis, and data visualization, I strive to extract meaningful insights from data to drive informed decision-making.</p>
+                        <p>Check out my <a href="https://github.com/MarBenitez" target="_blank">GitHub profile</a> for more of my work!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+        <section id="projects" class="py-5 bg-dark">
+            <div class="container">
+                <h2 class="section-title text-center">Projects</h2>
+                <div class="row" id="project-cards">
+                    {% for project in projects %}
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ project.title }}</h5>
+                                <p class="card-text">{{ project.description }}</p>
+                            </div>
+                            <div class="card-footer">
+                                <a href="{{ project.link }}" class="btn btn-sm btn-outline-secondary" target="_blank">View Code</a>
+                                <div class="technologies mt-2">
+                                    {{ project.technologies|join(', ') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
 
-				<!-- Intro -->
-					<section id="intro" class="wrapper style1 fullscreen fade-up">
-						<div class="inner">
-							<img src="assets/img/profile.jpg" alt="Mar Benitez" class="profile-image">
-							<h1>Mar Benitez</h1> 
-							<p>Data Scientist / Analyst with a foundation in Biotechnology and Genetics, blending technical expertise with a creative approach to problem-solving. Passionate about using data to drive impactful change in the technology sector.</p> 
-							<ul class="actions">
-								<li><a href="#one" class="button scrolly">Projects</a></li> 
-							</ul>
-						</div>
-					</section>
+        <section id="skills" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center">Skills</h2>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Technical Skills</h4>
+                        <ul class="list-unstyled">
+                            <li><i data-feather="check"></i> Python (NumPy, Pandas, Scikit-learn)</li>
+                            <li><i data-feather="check"></i> R (tidyverse, ggplot2)</li>
+                            <li><i data-feather="check"></i> SQL</li>
+                            <li><i data-feather="check"></i> Machine Learning</li>
+                            <li><i data-feather="check"></i> Deep Learning (TensorFlow, PyTorch)</li>
+                            <li><i data-feather="check"></i> Data Visualization (Matplotlib, Seaborn, D3.js)</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Soft Skills</h4>
+                        <ul class="list-unstyled">
+                            <li><i data-feather="check"></i> Problem Solving</li>
+                            <li><i data-feather="check"></i> Data Storytelling</li>
+                            <li><i data-feather="check"></i> Team Collaboration</li>
+                            <li><i data-feather="check"></i> Project Management</li>
+                            <li><i data-feather="check"></i> Communication</li>
+                            <li><i data-feather="check"></i> Continuous Learning</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-				<!-- One -->
-					<section id="one" class="wrapper style2 spotlights">
-						<section>
-							<a href="airbnb-analysis.html" class="image"><img src="assets/img/airbnb-analysis.png" alt="Airbnb Rio de Janeiro Analysis" data-position="center center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Airbnb Rio de Janeiro Analysis</h2>
-									<p>An end-to-end analysis of Airbnb listings to identify pricing trends and market behavior. Involves data cleaning, feature engineering, exploratory data analysis (EDA), and model building.</p>
-									<ul class="actions">
-										<li><a href="https://github.com/MarBenitez/airbnb-project" class="button">Learn More</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section>
-							<a href="data-processing-gui.html" class="image"><img src="assets/img/data-processing-gui.png" alt="Data Processing GUI" data-position="top center" /></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Data Processing GUI</h2>
-									<p>A GUI application designed to streamline data processing workflows, showcasing my abilities in software development for data-focused applications.</p>
-									<ul class="actions">
-										<li><a href="https://github.com/MarBenitez/data-processing-gui" class="button">Learn More</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					</section>
+        <section id="contact" class="py-5 bg-dark">
+            <div class="container">
+                <h2 class="section-title text-center">Contact</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form id="contact-form">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-				<!-- Two -->
-					<section id="two" class="wrapper style3 fade-up">
-						<div class="inner">
-							<h2>Work Experience</h2>
-							<div class="features">
-								<section>
-									<span class="icon solid major fa-code"></span>
-									<h3>Bioinformatician</h3>
-									<p>CSIC Zaragoza / May 2021 - Nov 2022</p>
-									<p>Contributed to bioinformatics research projects, focusing on peach germplasm. Implemented different approaches and methodologies to analyze genomic data and perform statistical analyses.</p>
-								</section>
-								<section>
-									<span class="icon solid major fa-chart-line"></span>
-									<h3>Data Analyst Intern</h3>
-									<p>KSchool / Jan 2023 - Jul 2023</p>
-									<p>Conducted advanced data analysis, data storytelling, and visualizations using Python and Power BI. Collaborated with a multidisciplinary team to deliver actionable insights to clients.</p>
-								</section>
-							</div>
+    <footer class="bg-dark text-light py-3">
+        <div class="container text-center">
+            <p>&copy; 2024 Mar Benitez. All rights reserved.</p>
+        </div>
+    </footer>
 
-							<h2>Education</h2>
-							<div class="features">
-								<section>
-									<h3>Master's in Data Science</h3> 
-									<p>KSchool / 2024</p>
-									<p>Supervised and unsupervised learning, deep learning, natural language processing, distributed environments with Spark, recommendation systems, and generative AI.</p>
-								</section>
-								<section>
-									<h3>Bachelor's in Biotechnology</h3>
-									<p>Universidad de Almería / 2020</p>
-									<p>Focus on genetic improvement and biotechnology techniques for agricultural applications.</p>
-								</section>
-							</div>
-						</div>
-					</section>
-
-				<!-- Three -->
-					<section id="three" class="wrapper style1 fade-up">
-						<div class="inner">
-							<section>
-								<ul class="contact">
-									<li>
-										<h3>Email</h3>
-										<a href="mailto:mar27benitez@gmail.com">mar27benitez@gmail.com</a>
-									</li>
-									<li>
-										<h3>Social Media</h3>
-										<ul class="icons">
-											<li><a href="https://github.com/MarBenitez" class="icon brands fa-github"><span class="label">GitHub</span></a></li> 
-											<li><a href="https://www.linkedin.com/in/mar-benitez-506910192/" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
-										</ul>
-									</li>
-								</ul>
-							</section>
-						</div>
-					</section>
-
-			</div>
-		<!-- Scripts -->
-			<script src="assets/js/main.js"></script>
-	</body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
 </html>

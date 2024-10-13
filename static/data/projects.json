@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Airbnb Rio de Janeiro Analysis",
+    "description": "An end-to-end analysis of Airbnb listings to identify pricing trends and market behavior. Involves data cleaning, feature engineering, EDA, and model building.",
+    "link": "https://github.com/MarBenitez/airbnb-project",
+    "technologies": ["Python", "Scikit-learn", "Pandas", "Matplotlib"]
+  },
+  {
+    "title": "Data Processing GUI for Sensor Data Analysis",
+    "description": "A GUI application designed to streamline data processing workflows, showcasing my abilities in software development for data-focused applications.",
+    "link": "https://github.com/MarBenitez/data-processing-gui",
+    "technologies": ["Python", "Tkinter", "Pandas"]
+  },
+  {
+    "title": "Sales Dashboard in Power BI",
+    "description": "Visualizes sales data across different regions.",
+    "link": "https://app.powerbi.com/view?r=eyJrIjoiZGRhYmMyOTMtYmEzYy00YjUzLWIyNTAtNmYwMmM2NWI3ZjhjIiwidCI6IjhhZWJkZGI2LTM0MTgtNDNhMS1hMjU1LWI5NjQxODZlY2M2NCIsImMiOjl9",
+    "technologies": ["Power BI"]
+  },
+  {
+    "title": "Rio de Janeiro - Airbnb Streamlit app",
+    "description": "User-friendly application designed to help people plan their trip to Rio de Janeiro easily and effectively.",
+    "link": "https://airbnb-rio.streamlit.app/",
+    "technologies": ["Python", "NLTK", "Scikit-learn", "Pandas"]
+  },
+  {
+    "title": "Image Classification with CNNs",
+    "description": "Implemented a Convolutional Neural Network to classify images from the CIFAR-10 dataset, achieving 89% accuracy.",
+    "link": "https://github.com/MarBenitez/ocr-mnist-tensorflow",
+    "technologies": ["Python", "TensorFlow", "Keras", "NumPy"]
+  }
+]
