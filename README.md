@@ -1,6 +1,6 @@
 # Personal Website
 
-This is a simple personal website showcasing skills, projects, and providing a way to contact me. It's designed to be hosted on GitHub Pages.
+This is a simple [personal website](https://marbenitez.github.io/) showcasing skills, projects, and providing a way to contact me. It's designed to be hosted on GitHub Pages.
 
 ## Features
 
