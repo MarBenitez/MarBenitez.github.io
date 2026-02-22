@@ -514,7 +514,7 @@
 <section id="hero">
   <div class="hero-grid"></div>
   <div class="hero-dot"></div>
-  <p class="hero-label">Open to new opportunities</p>
+  <p class="hero-label">Curiosity first.</p>
   <h1 class="hero-name">Mar<br><em>Benitez</em></h1>
   <p class="hero-title">Data & Marketing Intelligence</p>
   <p class="hero-bio">BI & Analytics Consultant building tools at the intersection of data and marketing strategy. I turn complex data into clear decisions — and sometimes into products.</p>
@@ -547,7 +547,7 @@
     </div>
     <div class="featured-img-wrap" style="border-top:1px solid var(--border);overflow:hidden;position:relative;background:var(--bg)">
       <img
-        src="https://tagscope-frontend.vercel.app/"
+        src="static/img/tagscope-preview.png"
         alt="TagScope app screenshot"
         style="width:100%;display:block;max-height:500px;object-fit:cover;object-position:top"
         onerror="this.style.display='none'"
@@ -726,16 +726,18 @@
 </section>
 
 <footer>
-  <span>© 2025 Mar Benitez</span>
+  <span>© 2026 Mar Benitez</span>
   <span>Built with HTML · Hosted on GitHub Pages</span>
 </footer>
 
 <script>
-// ── Scroll reveal ──────────────────────────────────────────────────────────
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
-      setTimeout(() => { e.target.classList.remove('hidden'); e.target.classList.add('visible'); }, i * 80);
+      setTimeout(() => {
+        e.target.classList.remove('hidden');
+        e.target.classList.add('visible');
+      }, i * 80);
     }
   });
 }, { threshold: 0.05 });
@@ -743,7 +745,6 @@ document.querySelectorAll('.reveal').forEach(el => {
   el.classList.add('hidden');
   observer.observe(el);
 });
-
 </script>
 </body>
 </html>
