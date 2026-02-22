@@ -10,496 +10,97 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg:      #08090f;
-      --bg2:     #0d0f1a;
-      --bg3:     #111320;
-      --border:  #1e2035;
-      --border2: #2a2d42;
-      --text:    #e8eaf0;
-      --text2:   #9ca3b8;
-      --text3:   #6b7490;
-      --text4:   #3d4260;
-      --accent:  #6366f1;
-      --accent2: #818cf8;
-      --gold:    #f0c060;
+      --bg: #08090f; --bg2: #0d0f1a; --bg3: #111320;
+      --border: #1e2035; --border2: #2a2d42;
+      --text: #e8eaf0; --text2: #9ca3b8; --text3: #6b7490; --text4: #3d4260;
+      --accent: #6366f1; --accent2: #818cf8;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* ── Noise overlay ── */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
-    }
-
-    /* ── Nav ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 20px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: linear-gradient(to bottom, rgba(8,9,15,0.95), transparent);
-    }
-    .nav-logo {
-      font-family: 'DM Mono', monospace;
-      font-size: 13px;
-      color: var(--text3);
-      letter-spacing: 0.08em;
-    }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; min-height: 100vh; overflow-x: hidden; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(8,9,15,0.95), transparent); }
+    .nav-logo { font-family: 'DM Mono', monospace; font-size: 13px; color: var(--text3); letter-spacing: 0.08em; }
     .nav-links { display: flex; gap: 32px; list-style: none; }
-    .nav-links a {
-      font-size: 13px;
-      color: var(--text3);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
+    .nav-links a { font-size: 13px; color: var(--text3); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--text); }
-
-    /* ── Hero ── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 120px 80px 80px;
-      position: relative;
-    }
-    .hero-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent2);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      animation: fadeUp 0.8s 0.2s both;
-    }
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(52px, 8vw, 100px);
-      font-weight: 700;
-      line-height: 1.0;
-      letter-spacing: -0.02em;
-      margin-bottom: 8px;
-      animation: fadeUp 0.8s 0.4s both;
-    }
-    .hero-name em {
-      font-style: italic;
-      color: var(--accent2);
-    }
-    .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(18px, 3vw, 28px);
-      font-weight: 400;
-      font-style: italic;
-      color: var(--text3);
-      margin-bottom: 40px;
-      animation: fadeUp 0.8s 0.6s both;
-    }
-    .hero-bio {
-      max-width: 560px;
-      font-size: 16px;
-      color: var(--text2);
-      line-height: 1.8;
-      margin-bottom: 48px;
-      animation: fadeUp 0.8s 0.8s both;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      animation: fadeUp 0.8s 1s both;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-      padding: 12px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      transition: all 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
+    #hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 120px 80px 80px; position: relative; }
+    .hero-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 24px; animation: fadeUp 0.8s 0.2s both; }
+    .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(52px, 8vw, 100px); font-weight: 700; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 8px; animation: fadeUp 0.8s 0.4s both; }
+    .hero-name em { font-style: italic; color: var(--accent2); }
+    .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(18px, 3vw, 28px); font-weight: 400; font-style: italic; color: var(--text3); margin-bottom: 40px; animation: fadeUp 0.8s 0.6s both; }
+    .hero-bio { max-width: 560px; font-size: 16px; color: var(--text2); line-height: 1.8; margin-bottom: 48px; animation: fadeUp 0.8s 0.8s both; }
+    .hero-cta { display: flex; gap: 16px; flex-wrap: wrap; animation: fadeUp 0.8s 1s both; }
+    .btn-primary { background: var(--accent); color: white; padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 14px; font-weight: 500; transition: all 0.2s; }
     .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
-    .btn-ghost {
-      border: 1px solid var(--border2);
-      color: var(--text2);
-      padding: 12px 28px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 14px;
-      transition: all 0.2s;
-    }
+    .btn-ghost { border: 1px solid var(--border2); color: var(--text2); padding: 12px 28px; border-radius: 6px; text-decoration: none; font-size: 14px; transition: all 0.2s; }
     .btn-ghost:hover { border-color: var(--text3); color: var(--text); }
-
-    /* Grid decoration */
-    .hero-grid {
-      position: absolute;
-      right: 0; top: 0; bottom: 0;
-      width: 45%;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 40px 40px;
-      mask-image: linear-gradient(to left, rgba(0,0,0,0.4), transparent);
-      pointer-events: none;
-    }
-    .hero-dot {
-      position: absolute;
-      right: 20%;
-      top: 50%;
-      width: 320px;
-      height: 320px;
-      background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%);
-      transform: translate(50%, -50%);
-      pointer-events: none;
-    }
-
-    /* ── Sections ── */
-    section {
-      padding: 100px 80px;
-      position: relative;
-      z-index: 1;
-    }
-    .section-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent2);
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(32px, 4vw, 52px);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 56px;
-      line-height: 1.1;
-    }
-    .divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--border2), transparent);
-      margin: 0 80px;
-      width: calc(100% - 160px);
-    }
-
-    /* ── Featured Project (TagScope) ── */
-    .featured-wrap {
-      background: var(--bg2);
-      border: 1px solid var(--border2);
-      border-radius: 16px;
-      overflow: hidden;
-      margin-bottom: 48px;
-      transition: border-color 0.3s;
-    }
+    .hero-grid { position: absolute; right: 0; top: 0; bottom: 0; width: 45%; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to left, rgba(0,0,0,0.4), transparent); pointer-events: none; }
+    .hero-dot { position: absolute; right: 20%; top: 50%; width: 320px; height: 320px; background: radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%); transform: translate(50%, -50%); pointer-events: none; }
+    section { padding: 100px 80px; position: relative; z-index: 1; }
+    .section-label { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 16px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin-bottom: 56px; line-height: 1.1; }
+    .divider { height: 1px; background: linear-gradient(to right, transparent, var(--border2), transparent); margin: 0 80px; }
+    .featured-wrap { background: var(--bg2); border: 1px solid var(--border2); border-radius: 16px; overflow: hidden; margin-bottom: 48px; transition: border-color 0.3s; }
     .featured-wrap:hover { border-color: var(--accent); }
-    .featured-header {
-      padding: 32px 40px 24px;
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 24px;
-      flex-wrap: wrap;
-    }
-    .featured-badge {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      background: rgba(99,102,241,0.15);
-      color: var(--accent2);
-      border: 1px solid rgba(99,102,241,0.3);
-      padding: 3px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: inline-block;
-      margin-bottom: 12px;
-    }
-    .featured-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .featured-desc {
-      color: var(--text2);
-      font-size: 15px;
-      line-height: 1.7;
-      max-width: 500px;
-    }
+    .featured-header { padding: 32px 40px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .featured-badge { font-family: 'DM Mono', monospace; font-size: 10px; background: rgba(99,102,241,0.15); color: var(--accent2); border: 1px solid rgba(99,102,241,0.3); padding: 3px 10px; border-radius: 20px; letter-spacing: 0.1em; text-transform: uppercase; display: inline-block; margin-bottom: 12px; }
+    .featured-title { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+    .featured-desc { color: var(--text2); font-size: 15px; line-height: 1.7; max-width: 500px; }
     .featured-links { display: flex; gap: 12px; align-items: center; flex-shrink: 0; }
-    .featured-iframe-wrap {
-      border-top: 1px solid var(--border);
-      height: 500px;
-      overflow: hidden;
-      position: relative;
-    }
-    .featured-iframe-wrap iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      transform-origin: top left;
-    }
-    .featured-tech {
-      padding: 16px 40px 24px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      border-top: 1px solid var(--border);
-    }
-    .tech-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--text3);
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      padding: 3px 10px;
-      border-radius: 4px;
-    }
-
-    /* ── Projects grid ── */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
-    }
-    .project-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 28px;
-      transition: all 0.3s;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .project-card:hover {
-      border-color: var(--border2);
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.4);
-    }
-    .project-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--text4);
-    }
-    .project-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.3;
-    }
-    .project-desc {
-      font-size: 13px;
-      color: var(--text2);
-      line-height: 1.7;
-      flex: 1;
-    }
-    .project-footer {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 8px;
-    }
-    .project-techs {
-      display: flex;
-      gap: 6px;
-      flex-wrap: wrap;
-    }
-    .project-tech {
-      font-family: 'DM Mono', monospace;
-      font-size: 10px;
-      color: var(--text4);
-    }
-    .project-link {
-      color: var(--accent2);
-      text-decoration: none;
-      font-size: 12px;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      transition: gap 0.2s;
-      white-space: nowrap;
-    }
+    .featured-img-wrap { border-top: 1px solid var(--border); overflow: hidden; position: relative; background: var(--bg); }
+    .featured-img-wrap img { width: 100%; display: block; max-height: 280px; object-fit: cover; object-position: top; }
+    .featured-tech { padding: 16px 40px 24px; display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--border); }
+    .tech-tag { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text3); background: var(--bg3); border: 1px solid var(--border); padding: 3px 10px; border-radius: 4px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .project-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 28px; transition: all 0.3s; display: flex; flex-direction: column; gap: 12px; }
+    .project-card:hover { border-color: var(--border2); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.4); }
+    .project-num { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text4); }
+    .project-title { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; line-height: 1.3; }
+    .project-desc { font-size: 13px; color: var(--text2); line-height: 1.7; flex: 1; }
+    .project-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+    .project-tech { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text4); }
+    .project-link { color: var(--accent2); text-decoration: none; font-size: 12px; display: flex; align-items: center; gap: 4px; transition: gap 0.2s; white-space: nowrap; }
     .project-link:hover { gap: 8px; }
-
-    /* ── Skills ── */
-    .skills-wrap {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 24px;
-    }
-    .skill-group {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-    .skill-group-name {
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      color: var(--accent2);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
+    .skills-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+    .skill-group { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .skill-group-name { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--accent2); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 16px; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
-    .skill-tag {
-      font-size: 12px;
-      color: var(--text2);
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      padding: 5px 12px;
-      border-radius: 20px;
-      transition: all 0.2s;
-      cursor: default;
-    }
-    .skill-tag:hover {
-      border-color: var(--accent);
-      color: var(--accent2);
-    }
-
-    /* ── About ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: center;
-    }
+    .skill-tag { font-size: 12px; color: var(--text2); background: var(--bg3); border: 1px solid var(--border); padding: 5px 12px; border-radius: 20px; transition: all 0.2s; cursor: default; }
+    .skill-tag:hover { border-color: var(--accent); color: var(--accent2); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
     .about-text { font-size: 16px; color: var(--text2); line-height: 1.9; }
     .about-text p + p { margin-top: 20px; }
-    .about-stats {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-    .stat-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px;
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 40px;
-      font-weight: 700;
-      color: var(--accent2);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .stat-label {
-      font-size: 12px;
-      color: var(--text3);
-    }
-
-    /* ── Contact ── */
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    .stat-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 24px; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: 40px; font-weight: 700; color: var(--accent2); line-height: 1; margin-bottom: 6px; }
+    .stat-label { font-size: 12px; color: var(--text3); }
     #contact { text-align: center; }
     #contact .section-title { margin-bottom: 16px; }
-    .contact-sub {
-      color: var(--text3);
-      font-size: 16px;
-      margin-bottom: 48px;
-    }
-    .contact-links {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .contact-link {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 24px;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      text-decoration: none;
-      color: var(--text2);
-      font-size: 14px;
-      transition: all 0.2s;
-    }
-    .contact-link:hover {
-      border-color: var(--accent);
-      color: var(--accent2);
-      transform: translateY(-2px);
-    }
+    .contact-sub { color: var(--text3); font-size: 16px; margin-bottom: 48px; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+    .contact-link { display: flex; align-items: center; gap: 10px; padding: 14px 24px; background: var(--bg2); border: 1px solid var(--border); border-radius: 10px; text-decoration: none; color: var(--text2); font-size: 14px; transition: all 0.2s; }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent2); transform: translateY(-2px); }
     .contact-link i { font-size: 18px; }
-
-    /* ── Footer ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    footer span {
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      color: var(--text4);
-    }
-
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .reveal {
-      opacity: 1;
-      transform: none;
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      .reveal.hidden {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      .reveal.hidden.visible {
-        opacity: 1;
-        transform: none;
-      }
-    }
-
-    /* ── Responsive ── */
+    footer { border-top: 1px solid var(--border); padding: 32px 80px; display: flex; justify-content: space-between; align-items: center; }
+    footer span { font-family: 'DM Mono', monospace; font-size: 12px; color: var(--text4); }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 1; transform: none; transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.hidden { opacity: 0; transform: translateY(20px); }
+    .reveal.hidden.visible { opacity: 1; transform: none; }
     @media (max-width: 900px) {
       #hero, section { padding: 80px 24px; }
       nav { padding: 16px 24px; }
       .nav-links { display: none; }
       .about-grid { grid-template-columns: 1fr; gap: 40px; }
       footer { padding: 24px; flex-direction: column; gap: 12px; text-align: center; }
-      .divider { margin: 0 24px; width: calc(100% - 48px); }
+      .divider { margin: 0 24px; }
       .featured-header { padding: 24px; }
       .featured-tech { padding: 12px 24px 20px; }
-      .featured-iframe-wrap { height: 380px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Nav -->
 <nav>
   <span class="nav-logo">mar benitez</span>
   <ul class="nav-links">
@@ -510,14 +111,13 @@
   </ul>
 </nav>
 
-<!-- Hero -->
 <section id="hero">
   <div class="hero-grid"></div>
   <div class="hero-dot"></div>
   <p class="hero-label">Curiosity first.</p>
   <h1 class="hero-name">Mar<br><em>Benitez</em></h1>
-  <p class="hero-title">Data & Marketing Intelligence</p>
-  <p class="hero-bio">BI & Analytics Consultant building tools at the intersection of data and marketing strategy. I turn complex data into clear decisions — and sometimes into products.</p>
+  <p class="hero-title">Data &amp; Marketing Intelligence</p>
+  <p class="hero-bio">BI &amp; Analytics Consultant building tools at the intersection of data and marketing strategy. I turn complex data into clear decisions — and sometimes into products.</p>
   <div class="hero-cta">
     <a href="#projects" class="btn-primary">View work ↓</a>
     <a href="static/files/MAR-BENITEZ-resume.pdf" class="btn-ghost" download>Download CV</a>
@@ -526,12 +126,10 @@
 
 <div class="divider"></div>
 
-<!-- Projects -->
 <section id="projects">
   <p class="section-label reveal">Selected Work</p>
   <h2 class="section-title reveal">Projects</h2>
 
-  <!-- TagScope Featured -->
   <div class="featured-wrap reveal">
     <div class="featured-header">
       <div>
@@ -540,19 +138,11 @@
         <p class="featured-desc">Free SEO meta tag inspector. Paste any URL and instantly see how your page appears on Google, on social shares, and on Twitter — with a full audit, pass/warn/fail diagnosis, and copy-ready fixes.</p>
       </div>
       <div class="featured-links">
-        <a href="https://tagscope-frontend.vercel.app/" target="_blank" rel="noopener" class="btn-primary">
-          Open app ↗
-        </a>
+        <a href="https://tagscope-frontend.vercel.app/" target="_blank" rel="noopener" class="btn-primary">Open app ↗</a>
       </div>
     </div>
-    <div class="featured-img-wrap" style="border-top:1px solid var(--border);overflow:hidden;position:relative;background:var(--bg)">
-      <img
-        src="static/img/tagscope-preview.png"
-        alt="TagScope app screenshot"
-        style="width:100%;display:block;max-height:500px;object-fit:cover;object-position:top"
-        onerror="this.style.display='none'"
-      />
-      <div style="position:absolute;inset:0;background:linear-gradient(to bottom,transparent 60%,var(--bg2));pointer-events:none"></div>
+    <div class="featured-img-wrap">
+      <img src="static/img/tagscope-preview.png" alt="TagScope app screenshot" />
     </div>
     <div class="featured-tech">
       <span class="tech-tag">Vanilla JS</span>
@@ -563,14 +153,13 @@
     </div>
   </div>
 
-  <!-- Other projects grid -->
-  <div class="projects-grid" id="projects-container">
+  <div class="projects-grid">
     <div class="project-card">
       <div class="project-num">02</div>
       <div class="project-title">Airbnb Rio de Janeiro Analysis</div>
       <div class="project-desc">End-to-end analysis of Airbnb listings to identify pricing trends and market behaviour. Data cleaning, feature engineering, EDA, and model building.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Python</span> · <span class="project-tech">Scikit-learn</span> · <span class="project-tech">Pandas</span></div>
+        <div><span class="project-tech">Python</span> · <span class="project-tech">Scikit-learn</span> · <span class="project-tech">Pandas</span></div>
         <a href="https://github.com/MarBenitez/airbnb-project" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -579,7 +168,7 @@
       <div class="project-title">Early Cancer Detection ML</div>
       <div class="project-desc">Replicated and enhanced findings from a research paper to predict cancer presence and type using ML models.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Python</span> · <span class="project-tech">MLFlow</span> · <span class="project-tech">Scikit-learn</span></div>
+        <div><span class="project-tech">Python</span> · <span class="project-tech">MLFlow</span> · <span class="project-tech">Scikit-learn</span></div>
         <a href="https://github.com/MarBenitez/Early-Cancer-Detection-ML-Project" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -588,7 +177,7 @@
       <div class="project-title">Data Processing GUI</div>
       <div class="project-desc">Desktop GUI application to streamline data processing workflows for sensor data analysis.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Python</span> · <span class="project-tech">Tkinter</span> · <span class="project-tech">Pandas</span></div>
+        <div><span class="project-tech">Python</span> · <span class="project-tech">Tkinter</span> · <span class="project-tech">Pandas</span></div>
         <a href="https://github.com/MarBenitez/data-processing-gui" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -597,7 +186,7 @@
       <div class="project-title">Sales Dashboard — Power BI</div>
       <div class="project-desc">Interactive dashboard visualising sales data across different regions. Published via Power BI embedded.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Power BI</span> · <span class="project-tech">DAX</span></div>
+        <div><span class="project-tech">Power BI</span> · <span class="project-tech">DAX</span></div>
         <a href="https://app.powerbi.com/view?r=eyJrIjoiZGRhYmMyOTMtYmEzYy00YjUzLWIyNTAtNmYwMmM2NWI3ZjhjIiwidCI6IjhhZWJkZGI2LTM0MTgtNDNhMS1hMjU1LWI5NjQxODZlY2M2NCIsImMiOjl9" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -606,7 +195,7 @@
       <div class="project-title">Rio de Janeiro — Streamlit App</div>
       <div class="project-desc">User-friendly app to help travellers plan their trip to Rio. Live on Streamlit Cloud.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Python</span> · <span class="project-tech">Streamlit</span> · <span class="project-tech">Scikit-learn</span></div>
+        <div><span class="project-tech">Python</span> · <span class="project-tech">Streamlit</span> · <span class="project-tech">Scikit-learn</span></div>
         <a href="https://airbnb-rio.streamlit.app/" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -615,7 +204,7 @@
       <div class="project-title">Image Classification with CNNs</div>
       <div class="project-desc">Convolutional Neural Network trained on the CIFAR-10 dataset achieving 89% classification accuracy.</div>
       <div class="project-footer">
-        <div class="project-techs"><span class="project-tech">Python</span> · <span class="project-tech">TensorFlow</span> · <span class="project-tech">Keras</span></div>
+        <div><span class="project-tech">Python</span> · <span class="project-tech">TensorFlow</span> · <span class="project-tech">Keras</span></div>
         <a href="https://github.com/MarBenitez/ocr-mnist-tensorflow" target="_blank" rel="noopener" class="project-link">View →</a>
       </div>
     </div>
@@ -624,7 +213,6 @@
 
 <div class="divider"></div>
 
-<!-- Skills -->
 <section id="skills">
   <p class="section-label reveal">Technical Stack</p>
   <h2 class="section-title reveal">Skills</h2>
@@ -632,41 +220,25 @@
     <div class="skill-group">
       <div class="skill-group-name">Languages</div>
       <div class="skill-tags">
-        <span class="skill-tag">Python</span>
-        <span class="skill-tag">SQL</span>
-        <span class="skill-tag">DAX</span>
-        <span class="skill-tag">R</span>
-        <span class="skill-tag">JavaScript</span>
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">DAX</span><span class="skill-tag">R</span><span class="skill-tag">JavaScript</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-name">Data & Analytics</div>
+      <div class="skill-group-name">Data &amp; Analytics</div>
       <div class="skill-tags">
-        <span class="skill-tag">Snowflake</span>
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">BigQuery</span>
-        <span class="skill-tag">Pandas</span>
-        <span class="skill-tag">Scikit-Learn</span>
-        <span class="skill-tag">Apache Spark</span>
+        <span class="skill-tag">Snowflake</span><span class="skill-tag">Power BI</span><span class="skill-tag">BigQuery</span><span class="skill-tag">Pandas</span><span class="skill-tag">Scikit-Learn</span><span class="skill-tag">Apache Spark</span>
       </div>
     </div>
     <div class="skill-group">
       <div class="skill-group-name">Marketing Tech</div>
       <div class="skill-tags">
-        <span class="skill-tag">Salesforce CRM</span>
-        <span class="skill-tag">Marketing Cloud</span>
-        <span class="skill-tag">SEO</span>
-        <span class="skill-tag">Marketing Analytics</span>
+        <span class="skill-tag">Salesforce CRM</span><span class="skill-tag">Marketing Cloud</span><span class="skill-tag">SEO</span><span class="skill-tag">Marketing Analytics</span>
       </div>
     </div>
     <div class="skill-group">
-      <div class="skill-group-name">Tools & Infra</div>
+      <div class="skill-group-name">Tools &amp; Infra</div>
       <div class="skill-tags">
-        <span class="skill-tag">Git</span>
-        <span class="skill-tag">Docker</span>
-        <span class="skill-tag">Azure</span>
-        <span class="skill-tag">Vercel</span>
-        <span class="skill-tag">Streamlit</span>
+        <span class="skill-tag">Git</span><span class="skill-tag">Docker</span><span class="skill-tag">Azure</span><span class="skill-tag">Vercel</span><span class="skill-tag">Streamlit</span>
       </div>
     </div>
   </div>
@@ -674,27 +246,26 @@
 
 <div class="divider"></div>
 
-<!-- About -->
 <section id="about">
   <p class="section-label reveal">Background</p>
   <h2 class="section-title reveal">About</h2>
   <div class="about-grid reveal">
     <div class="about-text">
-      <p>I'm a BI & Analytics Consultant currently at Jakala, where I build end-to-end data solutions — from Snowflake pipelines to Power BI dashboards — for marketing teams that need to make faster, smarter decisions.</p>
+      <p>I'm a BI &amp; Analytics Consultant currently at Jakala, where I build end-to-end data solutions — from Snowflake pipelines to Power BI dashboards — for marketing teams that need to make faster, smarter decisions.</p>
       <p>My background is deeply technical, but what drives me is the business question behind the data. I'm transitioning into Marketing Intelligence: combining analytical rigour with strategic thinking to understand why customers behave the way they do.</p>
       <p>When I'm not in the data, I build things. TagScope started as a weekend project to solve a real problem — and ended up live and in production. That's how I learn best.</p>
     </div>
     <div class="about-stats">
       <div class="stat-card">
         <div class="stat-num">3+</div>
-        <div class="stat-label">Years in BI & analytics consulting</div>
+        <div class="stat-label">Years in BI &amp; analytics consulting</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num">∞</div>
+        <div class="stat-num">&#8734;</div>
         <div class="stat-label">SQL queries written and rewritten (really)</div>
       </div>
       <div class="stat-card">
-        <div class="stat-num" style="font-size:28px;padding-top:8px">0→1</div>
+        <div class="stat-num" style="font-size:28px;padding-top:8px">0&#8594;1</div>
         <div class="stat-label">Build first, perfect later</div>
       </div>
       <div class="stat-card">
@@ -707,7 +278,6 @@
 
 <div class="divider"></div>
 
-<!-- Contact -->
 <section id="contact">
   <p class="section-label reveal" style="text-align:center">Get in touch</p>
   <h2 class="section-title reveal">Let's talk</h2>
@@ -726,8 +296,8 @@
 </section>
 
 <footer>
-  <span>© 2026 Mar Benitez</span>
-  <span>Built with HTML · Hosted on GitHub Pages</span>
+  <span>&#169; 2026 Mar Benitez</span>
+  <span>Built with HTML &middot; Hosted on GitHub Pages</span>
 </footer>
 
 <script>
